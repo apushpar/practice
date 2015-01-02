@@ -1,0 +1,20 @@
+/* Nuke2.java */
+
+import java.io.*;
+
+class Nuke2 {
+
+    public static void main(String[] args){
+
+	String inputLine;
+	BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+
+	while((inputLine = keyboard.readLine())!=null){
+
+	    System.out.println(inputLine);
+
+	}
+    }
+
+
+}
