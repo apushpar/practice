@@ -7,24 +7,24 @@ addItem method commented out
 	public static int lastItem;
 	private int[] a;
 
-	public arrayBasedList(){
+	public arrayBasedList(){ //default constructor
 		a = new int[10];
 		lastItem = -1;
 	}
 
-	public arrayBasedList(int value){
+	public arrayBasedList(int value){ //constructor with initial value
 		a = new int[10];
 		a[0] = value;
 		lastItem = 0;
 	}
 	
-	public void insertItem(int value, int location){
+	public void insertItem(int value, int location){ //to add value at a location, move other values to the next location
 		for (int i=lastItem;i>=location ;i-- ) {
 			a[i+1] = a[i];
 			
 		}
 		a[location] = value;
-		lastItem++;
+		lastItem++; 
 	}
 
 	/*public void addItem(int value){
