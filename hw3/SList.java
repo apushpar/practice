@@ -139,6 +139,14 @@ public class SList {
 
   public void twin() {
     // Fill in your solution here.  (Ours is seven lines long.)
+    SListNode currentNode = this.head;
+
+    if (currentNode != null) {
+      while(currentNode != null){
+        currentNode.next = new SListNode(currentNode.item,currentNode.next);
+        currentNode = currentNode.next.next;
+      }
+    }
   }
 
   /**
