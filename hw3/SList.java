@@ -112,6 +112,18 @@ public class SList {
 
   public void squish() {
     // Fill in your solution here.  (Ours is eleven lines long.)
+    SListNode currentNode = this.head; //take the head of the linkedlist as currentNode
+
+    if (currentNode != null) { //check if the head node is not null
+      while(currentNode.next != null){ //check if the next for the currentNode is not null
+        if (currentNode.item.equals(currentNode.next.item)) { //check item of currentNode with the item of the next node
+          currentNode.next = currentNode.next.next; //if match, then skip next node and set the next of currentNode to the node after the next node
+        }else{
+          currentNode = currentNode.next; //if the items values do not match, the set the currentNode as the next node.
+        }
+      }
+    }
+    
   }
 
   /**
