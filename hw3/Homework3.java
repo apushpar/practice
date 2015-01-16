@@ -21,11 +21,11 @@ public class Homework3 {
   public static void smoosh(int[] ints) {
     // Fill in your solution here.  (Ours is twelve lines long, not counting
     // blank lines or lines already present in this file.)
-    //int[] b = new int[ints.length];
-    //int[] b = ints;
-    //b[0] = ints[0];
+    //int[] b = new int[ints.length]; //not need to create new array. Does not change parent array data
+    //int[] b = ints; //same as maintaining ints. This statement adds unnecessary line
+    //b[0] = ints[0]; //not needed
     int j = 1;
-    if (ints.length > 1) {
+    if (ints.length > 1) { //check for array length.
       
       for (int i = 1;i < ints.length; i++) {
         if (ints[i] != ints[i-1]) {
@@ -33,15 +33,16 @@ public class Homework3 {
           j++;
         }
       }
-
-      for (int k = j;k<ints.length ;k++ ) {
+/**
+*Below for loop is used to add -1 to the rest of the elements of the array
+* @k holds the index value of the elements added to the original array without the duplicates
+**/
+      for (int k = j;k<ints.length ;k++ ) { 
         ints[k] = -1;
       }
-      
+
   }
-    //return b;
-    //System.out.println(stringInts(b));
-  }
+    }
 
   /**
    *  stringInts() converts an array of ints to a String.
