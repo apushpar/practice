@@ -1,3 +1,5 @@
+import java.util.Hashtable;
+
 public class SList{
 
 	private SListNode head;
@@ -224,21 +226,37 @@ public class SList{
 		return newList;
 	}
 
-	public int palindrome(){
+	public boolean palindrome(){
 
-		/*SListNode current = head;
-		int i = 0;
-
+		SListNode current = head;
+		int i = 1;
+		int j = (size/2);
+		int comparator;
+		Hashtable<Integer,Integer> prevStore = new Hashtable<Integer, Integer>();
+		if (size%2 == 0) {
+				comparator = (int)size/2;
+		}else{
+				comparator = ((int)size/2) + 1;
+		}
+		
 		while(current != null){
 
-			if (i >= (int)size/2) {
-				
-			}
+				if (i > comparator) {
+					
+					if (!prevStore.get(j).equals(current.item)) {
+							return false;
+						}
+					j--;
+				}
+				else{
+					prevStore.put(i,(int)current.item);
+				}
 
-			current = current.next;
-			i++
-		}*/
-		return (int)size/2;
+				current = current.next;
+				i++;
+			}
+			return true;
+		
 	}
 
 	//1,2,3,4
@@ -282,9 +300,13 @@ public class SList{
 		System.out.println(l1.toString());
 		*/
 		SList l3 = new SList();
-		l3.insertFront(new Integer(6));
+		l3.insertFront(new Integer(3));
 		l3.insertFront(new Integer(1));
-		l3.insertFront(new Integer(7));
+		l3.insertFront(new Integer(2));
+		l3.insertFront(new Integer(0));
+		l3.insertFront(new Integer(2));
+		l3.insertFront(new Integer(1));
+		l3.insertFront(new Integer(3));
 
 		System.out.println(l3.toString());
 
@@ -293,10 +315,11 @@ public class SList{
 		l4.insertFront(new Integer(9));
 		l4.insertFront(new Integer(5));		
 
-		System.out.println(l4.toString());
+		//System.out.println(l4.toString());
 		//System.out.println(l3.listToNumber());
 		//System.out.println(l3.addReverse(l4).toString());
-		System.out.println(l3.addNormal(l4).toString());
+		//System.out.println(l3.addNormal(l4).toString());
+		System.out.println(l3.palindrome());
 	}
 
 }
