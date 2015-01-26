@@ -155,7 +155,7 @@ public class SList{
 		
 	}
 
-	public int listToNumber(){
+	public int listToNumberReverse(){
 
 		int i = 1;
 		int result = 0;
@@ -169,9 +169,29 @@ public class SList{
 		return result;
 	}
 
+	public int listToNumber(){
+
+		int i = 1;
+		int result = 0;
+		SListNode current = head;
+		int multFactor = 1;
+		while(i < size){
+			multFactor = multFactor * 10;
+			i++;
+		}
+
+		while(current != null){
+			result += multFactor*(int)current.item;
+			current = current.next;
+			multFactor = multFactor/10;
+		}
+
+		return result;
+	}	
+
 	public SList addReverse(SList node){
-		int number1 = this.listToNumber();
-		int number2 = node.listToNumber();
+		int number1 = this.listToNumberReverse();
+		int number2 = node.listToNumberReverse();
 		SList newList = new SList();
 
 		int result = number1 + number2;
@@ -187,6 +207,43 @@ public class SList{
 
 	}
 
+	public SList addNormal(SList node){
+		int number1 = this.listToNumber();
+		int number2 = node.listToNumber();
+		SList newList = new SList();
+
+		int result = number1 + number2;
+		int divFactor = 10;
+		newList.insertFront(result%divFactor);
+		result = result/divFactor;
+		while(result > 0){
+			newList.insertFront(result%divFactor);
+			result = result/divFactor;
+		}
+		
+		return newList;
+	}
+
+	public int palindrome(){
+
+		/*SListNode current = head;
+		int i = 0;
+
+		while(current != null){
+
+			if (i >= (int)size/2) {
+				
+			}
+
+			current = current.next;
+			i++
+		}*/
+		return (int)size/2;
+	}
+
+	//1,2,3,4
+
+	//1,2,3,4,5
 
 	public static void main(String[] args){
 
@@ -237,8 +294,9 @@ public class SList{
 		l4.insertFront(new Integer(5));		
 
 		System.out.println(l4.toString());
-		int l3Number = l3.listToNumber();
-		System.out.println(l3.addReverse(l4).toString());
+		//System.out.println(l3.listToNumber());
+		//System.out.println(l3.addReverse(l4).toString());
+		System.out.println(l3.addNormal(l4).toString());
 	}
 
 }
