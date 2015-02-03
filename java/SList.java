@@ -259,9 +259,47 @@ public class SList{
 		
 	}
 
-	//1,2,3,4
+public SListNode findCorrupt(){
 
-	//1,2,3,4,5
+	SListNode fast = head;
+	SListNode slow = head;
+
+	if (fast == null || fast.next == null) {
+			return null;
+		}	
+
+	while(fast.next != null){
+		//System.out.println(slow.toString()+"  "+fast.toString());
+		slow = slow.next;
+		fast = fast.next.next;
+		if (fast.equals(slow)) {
+			break;
+		}
+		//slow = slow.next;
+		//fast = fast.next.next;
+	}
+
+	if (fast.next == null || slow.next == null) {
+		return null;
+	}
+
+	slow = head;
+	//System.out.println(slow.toString()+"  "+fast.toString());
+	while(fast != null){
+		if (fast.equals(slow)) {
+			return slow;
+		}
+		slow = slow.next;
+		fast = fast.next;
+	}
+	return null;
+}
+
+public void insertSListNode(SListNode node){
+
+	node.next = head;
+	head = node;
+}
 
 	public static void main(String[] args){
 
@@ -280,25 +318,28 @@ public class SList{
 		System.out.println(l1.toString());
 
 		System.out.println(l1.nToLast(5));
-
+		*/
 		SListNode a = new SListNode(new Integer(1));
 		SListNode b = new SListNode(new Integer(2));
 		SListNode c = new SListNode(new Integer(3));
 		SListNode d = new SListNode(new Integer(4));
 		SListNode e = new SListNode(new Integer(5));
 		SList l2 = new SList();
-		l2.insertEnd(a);
-		l2.insertEnd(b);
-		l2.insertEnd(c);
-		l2.insertEnd(d);
-		l2.insertEnd(e);
-		System.out.println(l2.toString());
+		l2.insertSListNode(a); //1
+		l2.insertSListNode(b); //2
+		l2.insertSListNode(b); //3
+		l2.insertSListNode(d); //4
+		l2.insertSListNode(e); //5 [5,4,3,1,1]
 
+		System.out.println(l2.findCorrupt().toString()); //how to handle the null case???
+
+		//System.out.println(l2.toString());
+/*
 //		c.deleteRestrictedNode();
 		l1.partition(2);
 
 		System.out.println(l1.toString());
-		*/
+		
 		SList l3 = new SList();
 		l3.insertFront(new Integer(3));
 		l3.insertFront(new Integer(1));
@@ -320,6 +361,7 @@ public class SList{
 		//System.out.println(l3.addReverse(l4).toString());
 		//System.out.println(l3.addNormal(l4).toString());
 		System.out.println(l3.palindrome());
+		*/
 	}
 
 }

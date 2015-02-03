@@ -16,5 +16,13 @@ class SListNode{
 
 	}
 
+	public String toString(){
+		if (this.equals("-1")) {
+			return "no loop";
+		}
+		return this.item.toString();
+	}	
+
+
 
 }
